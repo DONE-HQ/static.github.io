@@ -441,22 +441,47 @@ Buffalo Grove, IL 60089                    </a>
       document.body.appendChild(script);
     }, 3000);
   });</script>
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" type="text/css">
-<script defer>window.addEventListener('load', function () {
-    setTimeout(function () {
-      var gtagScript = document.createElement('script');
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-W6R1TRMJ6R';
-      gtagScript.async = true;
-      document.head.appendChild(gtagScript);
-
-      gtagScript.onload = function () {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-W6R1TRMJ6R');
-      };
-    }, 3000);
-  });</script>
+<!-- <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" type="text/css"> -->
+<script defer>(function() {
+      var analyticsLoaded = false;
+  
+      function loadAnalytics() {
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+  
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-W6R1TRMJ6R';
+        script.async = true;
+  
+        script.addEventListener('load', function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', 'G-W6R1TRMJ6R');
+        });
+  
+        script.addEventListener('error', function () {
+          console.error('Не удалось загрузить Google Analytics.');
+        });
+  
+        document.head.appendChild(script);
+  
+        // После первой загрузки удаляем слушателей
+        document.removeEventListener('scroll', loadAnalytics);
+        document.removeEventListener('mousemove', loadAnalytics);
+        document.removeEventListener('touchstart', loadAnalytics);
+        document.removeEventListener('keydown', loadAnalytics);
+      }
+  
+      // Навешиваем слушатели на первое действие пользователя
+      document.addEventListener('scroll', loadAnalytics);
+      document.addEventListener('mousemove', loadAnalytics);
+      document.addEventListener('touchstart', loadAnalytics);
+      document.addEventListener('keydown', loadAnalytics);
+  
+      // На всякий случай таймер: если пользователь просто смотрит и не двигает мышью
+      setTimeout(loadAnalytics, 10000); // через 10 секунд подгружаем автоматически
+    })();</script>
 <!--  Clarity Tracking Code for https://www.donehq.com/  -->
 <script defer>window.addEventListener('load', function () {
     setTimeout(function () {
@@ -473,5 +498,5 @@ Buffalo Grove, IL 60089                    </a>
 
 
 
-<!-- plugin=object-cache-pro client=phpredis metric#hits=1291 metric#misses=12 metric#hit-ratio=99.1 metric#bytes=294221 metric#prefetches=0 metric#store-reads=67 metric#store-writes=4 metric#store-hits=76 metric#store-misses=5 metric#sql-queries=17 metric#ms-total=3177.54 metric#ms-cache=155.30 metric#ms-cache-avg=2.2185 metric#ms-cache-ratio=4.9 -->
+<!-- plugin=object-cache-pro client=phpredis metric#hits=1297 metric#misses=12 metric#hit-ratio=99.1 metric#bytes=399549 metric#prefetches=0 metric#store-reads=68 metric#store-writes=4 metric#store-hits=77 metric#store-misses=5 metric#sql-queries=17 metric#ms-total=2912.31 metric#ms-cache=87.32 metric#ms-cache-avg=1.2298 metric#ms-cache-ratio=3.0 -->
 </html>

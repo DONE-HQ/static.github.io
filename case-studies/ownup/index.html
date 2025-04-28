@@ -548,7 +548,7 @@ var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","s
 <script defer src="/wp-content/plugins/gravityforms/js/placeholders.jquery.min.js?ver=2.9.7.1" id="gform_placeholder-js"></script>
 <script defer src="/wp-content/plugins/gravityforms/assets/js/dist/utils.min.js?ver=a8f8e72876ba5bc3f797026fe4225946" id="gform_gravityforms_utils-js"></script>
 <script defer src="/wp-content/plugins/gravityforms/assets/js/dist/vendor-theme.min.js?ver=639b4ac21c17c9dc304b05db4a3d3293" id="gform_gravityforms_theme_vendors-js"></script>
-<script id="gform_gravityforms_theme-js-extra">var gform_theme_config = {"common":{"form":{"honeypot":{"version_hash":"2f33a428c3f5582465566c20324b2315"},"ajax":{"ajaxurl":"\/wp-admin\/admin-ajax.php","ajax_submission_nonce":"7af26b0118","i18n":{"step_announcement":"Step %1$s of %2$s, %3$s","unknown_error":"There was an unknown error processing your request. Please try again."}}}},"hmr_dev":"","public_path":"\/wp-content\/plugins\/gravityforms\/assets\/js\/dist\/","config_nonce":"e6e55d5ff4"};</script>
+<script id="gform_gravityforms_theme-js-extra">var gform_theme_config = {"common":{"form":{"honeypot":{"version_hash":"2f33a428c3f5582465566c20324b2315"},"ajax":{"ajaxurl":"\/wp-admin\/admin-ajax.php","ajax_submission_nonce":"7af26b0118","i18n":{"step_announcement":"Step %1$s of %2$s, %3$s","unknown_error":"There was an unknown error processing your request. Please try again."}}}},"hmr_dev":"","public_path":"\/wp-content\/plugins\/gravityforms\/assets\/js\/dist\/","config_nonce":"76aa836198"};</script>
 <script defer src="/wp-content/plugins/gravityforms/assets/js/dist/scripts-theme.min.js?ver=df7d94fe9fc1f64aa683997d87531853" id="gform_gravityforms_theme-js"></script>
 <script>gform.initializeOnLoaded( function() { jQuery(document).on('gform_post_render', function(event, formId, currentPage){if(formId == 1) {if(typeof Placeholders != 'undefined'){
                         Placeholders.enable();
@@ -567,22 +567,47 @@ var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","s
       document.body.appendChild(script);
     }, 3000);
   });</script>
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" type="text/css">
-<script defer>window.addEventListener('load', function () {
-    setTimeout(function () {
-      var gtagScript = document.createElement('script');
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-W6R1TRMJ6R';
-      gtagScript.async = true;
-      document.head.appendChild(gtagScript);
-
-      gtagScript.onload = function () {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-W6R1TRMJ6R');
-      };
-    }, 3000);
-  });</script>
+<!-- <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" type="text/css"> -->
+<script defer>(function() {
+      var analyticsLoaded = false;
+  
+      function loadAnalytics() {
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+  
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-W6R1TRMJ6R';
+        script.async = true;
+  
+        script.addEventListener('load', function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', 'G-W6R1TRMJ6R');
+        });
+  
+        script.addEventListener('error', function () {
+          console.error('Не удалось загрузить Google Analytics.');
+        });
+  
+        document.head.appendChild(script);
+  
+        // После первой загрузки удаляем слушателей
+        document.removeEventListener('scroll', loadAnalytics);
+        document.removeEventListener('mousemove', loadAnalytics);
+        document.removeEventListener('touchstart', loadAnalytics);
+        document.removeEventListener('keydown', loadAnalytics);
+      }
+  
+      // Навешиваем слушатели на первое действие пользователя
+      document.addEventListener('scroll', loadAnalytics);
+      document.addEventListener('mousemove', loadAnalytics);
+      document.addEventListener('touchstart', loadAnalytics);
+      document.addEventListener('keydown', loadAnalytics);
+  
+      // На всякий случай таймер: если пользователь просто смотрит и не двигает мышью
+      setTimeout(loadAnalytics, 10000); // через 10 секунд подгружаем автоматически
+    })();</script>
 <!--  Clarity Tracking Code for https://www.donehq.com/  -->
 <script defer>window.addEventListener('load', function () {
     setTimeout(function () {
@@ -599,5 +624,5 @@ var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","s
 
 
 
-<!-- plugin=object-cache-pro client=phpredis metric#hits=1942 metric#misses=63 metric#hit-ratio=96.9 metric#bytes=294882 metric#prefetches=0 metric#store-reads=109 metric#store-writes=38 metric#store-hits=69 metric#store-misses=56 metric#sql-queries=93 metric#ms-total=5758.21 metric#ms-cache=451.55 metric#ms-cache-avg=3.0928 metric#ms-cache-ratio=7.8 sample#redis-hits=195234 sample#redis-misses=24444 sample#redis-hit-ratio=88.9 sample#redis-ops-per-sec=116 sample#redis-evicted-keys=0 sample#redis-used-memory=50581032 sample#redis-used-memory-rss=15286272 sample#redis-memory-fragmentation-ratio=0.3 sample#redis-connected-clients=6 sample#redis-tracking-clients=0 sample#redis-rejected-connections=0 sample#redis-keys=1230 -->
+<!-- plugin=object-cache-pro client=phpredis metric#hits=1979 metric#misses=16 metric#hit-ratio=99.2 metric#bytes=480250 metric#prefetches=0 metric#store-reads=94 metric#store-writes=6 metric#store-hits=101 metric#store-misses=9 metric#sql-queries=62 metric#ms-total=4573.49 metric#ms-cache=326.02 metric#ms-cache-avg=3.2931 metric#ms-cache-ratio=7.1 -->
 </html>
